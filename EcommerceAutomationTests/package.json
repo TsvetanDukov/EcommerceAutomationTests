@@ -1,0 +1,23 @@
+{
+  "name": "ecommerceautomationtests",
+  "version": "1.0.0",
+  "description": "Ecommerce website automation tests",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Tsvetan Dukov",
+  "license": "ISC",
+  "devDependencies": {
+    "@wdio/cli": "^7.7.4",
+    "@wdio/local-runner": "^7.7.4",
+    "@wdio/mocha-framework": "^7.7.4",
+    "@wdio/spec-reporter": "^7.7.3",
+    "@wdio/sync": "^7.7.4",
+    "chai": "^4.3.4",
+    "chai-webdriver": "^1.2.3",
+    "chromedriver": "^91.0.1",
+    "wdio-chromedriver-service": "^7.1.1",
+    "webdriverio": "^7.7.4"
+  }
+}
