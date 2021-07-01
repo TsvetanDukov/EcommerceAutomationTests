@@ -4,6 +4,7 @@ const dressesPage = require("../pageObjects/dresses.page")
 const tshirtsPage = require("../pageObjects/tshirts.page")
 const contactPage = require("../pageObjects/contact.page")
 const searchPage = require("../pageObjects/search.page")
+const { assert } = require("chai")
 
 describe("Home page Test Suite", () => {
     beforeEach(() => {
@@ -14,28 +15,29 @@ describe("Home page Test Suite", () => {
     xit("Navigation bar links test",
         () => {
             //Verify that links from navigation panel are working properly
-            homePage.womenLink.click();
-            expect(womenPage.pageTitle).toEqual("Women - My Store");
+            homePage.clickOnWomenLink();
+            assert.equal(womenPage.pageTitle, "Women - My Store", "Incorrect page title!");
             browser.back();
-            homePage.dressesLink.click();
-            expect(dressesPage.pageTitle).toEqual("Dresses - My Store");
+            homePage.clickOnDressesLink();
+            assert.equal(dressesPage.pageTitle, "Dresses - My Store", "Incorrect page title!");
             browser.back();
-            homePage.tshirtsLink.click();
-            expect(tshirtsPage.pageTitle).toEqual("T-shirts - My Store");
+            homePage.clickOnTshirtLink();
+            assert.equal(tshirtsPage.pageTitle, "T-shirts - My Store", "Incorrect page title!");
         })
 
     xit("Verify 'Contact us' link",
         () => {
-            homePage.contactUsLink.click();
-            expect(contactPage.pageTitle).toEqual("Contact us - My Store");
+            //Verify that 'Contact us' link is working properly
+            homePage.clickOnContactUsLink();
+            assert.equal(contactPage.pageTitle, "Contact us - My Store", "Incorrect page title!");
         });
 
     it("Test search field and search button",
         () => {
             //Verify that user is able to use search field
             expect(homePage.searchField.isDisplayed()).toBe(true);
-            homePage.searchField.setValue("Dress");
-            homePage.searchButton.click();
-            expect(searchPage.pageTitle).toEqual("Search - My Store");
+            homePage.enterTextInTheSearchField("Dress");
+            homePage.pressSearchButton();
+            assert.equal(searchPage.pageTitle, "Search - My Store", "Incorrect page!");
         })
 });
