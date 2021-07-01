@@ -9,6 +9,8 @@ class HomePage {
     get contactUsLink() { return $("#contact-link") }
     get searchField() { return $("#search_query_top") }
     get searchButton() { return $("button[name = 'submit_search']") }
+    get headerPhoneNumber() { return $(".shop-phone") }
+    get shoppingCart() { return $("//div[@class = 'shopping_cart']/a") }
 
     /**
      * Define all functions needed
@@ -48,6 +50,16 @@ class HomePage {
     pressSearchButton() {
         this.searchButton.waitForDisplayed();
         this.searchButton.click();
+    }
+
+    HeaderPhoneNumber() {
+        this.headerPhoneNumber.waitForDisplayed();
+        return this.headerPhoneNumber.getText();
+    }
+
+    clickOnShoppingCart() {
+        this.shoppingCart.waitForDisplayed();
+        this.shoppingCart.click();
     }
 
 
