@@ -1,4 +1,6 @@
-class HomePage {
+const Page = require("../pageObjects/page")
+
+class HomePage extends Page {
 
     /** 
      * Define selectors using getter methods
@@ -11,6 +13,10 @@ class HomePage {
     get searchButton() { return $("button[name = 'submit_search']") }
     get headerPhoneNumber() { return $(".shop-phone") }
     get shoppingCart() { return $("//div[@class = 'shopping_cart']/a") }
+
+    open() {
+        return super.open();
+    }
 
     /**
      * Define all functions needed

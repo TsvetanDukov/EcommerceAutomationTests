@@ -9,13 +9,13 @@ const { assert } = require("chai")
 
 describe("Home page Test Suite", () => {
     beforeEach(() => {
-        browser.url("/");
         browser.maximizeWindow();
     });
 
     it("Navigation bar links test",
         () => {
             //Verify that links from navigation panel are working properly
+            homePage.open();
             homePage.clickOnWomenLink();
             assert.equal(womenPage.pageTitle, "Women - My Store", "Incorrect page title!");
             browser.back();
@@ -29,6 +29,7 @@ describe("Home page Test Suite", () => {
     it("Verify 'Contact us' link",
         () => {
             //Verify that 'Contact us' link is working properly
+            homePage.open();
             homePage.clickOnContactUsLink();
             assert.equal(contactPage.pageTitle, "Contact us - My Store", "Incorrect page title!");
         });
@@ -36,6 +37,7 @@ describe("Home page Test Suite", () => {
     it("Test search field and search button",
         () => {
             //Verify that user is able to use search field
+            homePage.open();
             expect(homePage.searchField.isDisplayed()).toBe(true);
             homePage.enterTextInTheSearchField("Dress");
             homePage.pressSearchButton();
@@ -44,13 +46,16 @@ describe("Home page Test Suite", () => {
 
     it("Verify phone number from page navigation bar",
         () => {
+            homePage.open();
             expect(homePage.headerPhoneNumber.isDisplayed()).toBe(true);
             assert.equal(homePage.HeaderPhoneNumber(), "Call us now: 0123-456-789", "Incorrect data!");
         });
 
-    it("Verify 'Shopping Cart' is displayed and redirect us to orders page.", () => {
-        expect(homePage.shoppingCart.isDisplayed()).toBe(true);
-        homePage.clickOnShoppingCart();
-        assert.equal(orderPage.pageTitle, "Order - My Store", "Page title is incorrect!");
-    });
+    it("Verify 'Shopping Cart' is displayed and redirect us to orders page.",
+        () => {
+            homePage.open();
+            expect(homePage.shoppingCart.isDisplayed()).toBe(true);
+            homePage.clickOnShoppingCart();
+            assert.equal(orderPage.pageTitle, "Order - My Store", "Page title is incorrect!");
+        });
 });
