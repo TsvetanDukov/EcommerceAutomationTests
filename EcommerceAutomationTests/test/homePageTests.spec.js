@@ -5,6 +5,7 @@ const tshirtsPage = require("../pageObjects/tshirts.page")
 const contactPage = require("../pageObjects/contact.page")
 const searchPage = require("../pageObjects/search.page")
 const orderPage = require("../pageObjects/order.page")
+const search = require("../testData/searchFieldData")
 const { assert } = require("chai")
 
 describe("Home page Test Suite", () => {
@@ -39,7 +40,9 @@ describe("Home page Test Suite", () => {
             //Verify that user is able to use search field
             homePage.open();
             expect(homePage.searchField.isDisplayed()).toBe(true);
-            homePage.enterTextInTheSearchField("Dress");
+            //Enter search data through external data file
+            homePage.enterTextInTheSearchField(search.userInput);
+            browser.pause(2000)
             homePage.pressSearchButton();
             assert.equal(searchPage.pageTitle, "Search - My Store", "Incorrect page!");
         });
