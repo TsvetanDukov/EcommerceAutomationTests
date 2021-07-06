@@ -4,7 +4,7 @@ class HomePage extends Page {
 
     /** 
      * Define selectors using getter methods
-    */
+     */
     get womenLink() { return $("a[title='Women']") }
     get dressesLink() { return $("//ul[@class = 'sf-menu clearfix menu-content sf-js-enabled sf-arrows']/child::li[2]") }
     get tshirtsLink() { return $("//ul[@class = 'sf-menu clearfix menu-content sf-js-enabled sf-arrows']/child::li[3]") }
@@ -13,6 +13,7 @@ class HomePage extends Page {
     get searchButton() { return $("button[name = 'submit_search']") }
     get headerPhoneNumber() { return $(".shop-phone") }
     get shoppingCart() { return $("//div[@class = 'shopping_cart']/a") }
+    get signIn() { return $('.login') }
 
     open() {
         return super.open();
@@ -58,6 +59,10 @@ class HomePage extends Page {
         this.searchButton.click();
     }
 
+    /**
+     * Get phone number from header
+     * @returns {String} phone number from header
+     */
     HeaderPhoneNumber() {
         this.headerPhoneNumber.waitForDisplayed();
         return this.headerPhoneNumber.getText();
@@ -68,6 +73,10 @@ class HomePage extends Page {
         this.shoppingCart.click();
     }
 
+    clickOnSignInLink() {
+        this.signIn.waitForDisplayed();
+        this.signIn.click();
+    }
 
 }
 module.exports = new HomePage();
