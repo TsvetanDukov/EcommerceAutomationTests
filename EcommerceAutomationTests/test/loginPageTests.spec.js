@@ -54,9 +54,25 @@ describe("Login page tests", () => {
         assert.equal("Address Last name", loginPage.checkAddressLastNameFieldText(), "Incorrect last name data!");
         loginPage.setAddressCompanyNameField("Address Company name");
         assert.equal("Address Company name", loginPage.checkAddressCompanyNameFieldText(), "Incorrect company data!");
+        loginPage.setCompanyAddressField1("Company address1");
+        assert.equal("Company address1", loginPage.checkCompanyAddressField1Text(), "Incorrect company address data!");
+        loginPage.setCompanyAddressField2("Company address2");
+        assert.equal("Company address2", loginPage.checkCompanyAddressField2Text(), "Incorrect company address data!");
+        loginPage.setAddressCityField("City");
+        assert.equal("City", loginPage.checkAddressCityFieldText(), "Incorrect city text!");
+        loginPage.selectAddressStateFromDropdown(6);
+        assert.equal("Colorado", loginPage.checkAddressStateSelectedValue(), "Incorrect state has been selected!");
+        loginPage.setPostCodeField("80201");
+        assert.equal("80201", loginPage.checkPostCodeFieldText(), "Incorrect post code!");
+        loginPage.setHomePhoneField("02555555");
+        assert.equal("02555555", loginPage.checkHomePhoneFieldText(), "Incorrect home phone number!");
+        loginPage.setPhoneNumberField("0888776688");
+        assert.equal("0888776688", loginPage.checkPhoneNumberFieldText(), "Incorrect phone number!");
+        assert.equal("Register", loginPage.checkRegisterButtonText(), "Incorrect button text!");
+        loginPage.clickRegisterButton();
 
         /**
-         * TODO: Create more functions for 'Create account' form
+         * TODO Create new file in testData folder for 'Account creation' form
          */
     });
 });

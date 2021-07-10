@@ -27,6 +27,15 @@ class LoginPage extends Page {
     get addressFirstNameField() { return $("#firstname") };
     get addressLastNameField() { return $("#lastname") };
     get addressCompanyField() { return $("#company") };
+    get addressCompanyAddressField1() { return $("#address1") };
+    get addressCompanyAddressField2() { return $("#address2") };
+    get addressCityField() { return $("#city") };
+    get addressStateDropdownMenu() { return $("#uniform-id_state") };
+    get selectedStateText() { return $("div[id ='uniform-id_state'] span") };
+    get addressPostCodeField() { return $("#postcode") };
+    get addressPhoneNumberField() { return $("#phone_mobile") };
+    get registerButton() { return $("#submitAccount span") };
+    get homePhoneField() { return $("#phone") };
 
 
     open() {
@@ -252,6 +261,131 @@ class LoginPage extends Page {
     checkAddressCompanyNameFieldText() {
         this.addressCompanyField.waitForDisplayed();
         return this.addressCompanyField.getValue();
+    }
+
+    /**
+     * Enter company address in the first 'address' field
+     * @param {String} companyAddress1 Company address first field
+     */
+    setCompanyAddressField1(companyAddress1) {
+        this.addressCompanyAddressField1.waitForDisplayed();
+        this.addressCompanyAddressField1.setValue(companyAddress1)
+    }
+
+    /**
+     * Verify correct data is entered into the first field
+     * @returns {String} Text entered in the first address field
+     */
+    checkCompanyAddressField1Text() {
+        this.addressCompanyAddressField1.waitForDisplayed();
+        return this.addressCompanyAddressField1.getValue();
+    }
+
+    /**
+     * Enter company address in the second 'address' field
+     * @param {String} companyAddress2 Company address first field
+     */
+    setCompanyAddressField2(companyAddress2) {
+        this.addressCompanyAddressField2.waitForDisplayed();
+        this.addressCompanyAddressField2.setValue(companyAddress2)
+    }
+
+    /**
+     * Verify that correct data is entered into the second field
+     * @returns {String} Text entered in the second address field
+     */
+    checkCompanyAddressField2Text() {
+        this.addressCompanyAddressField2.waitForDisplayed();
+        return this.addressCompanyAddressField2.getValue();
+    }
+
+    /**
+     * Enters city name in the field
+     * @param {String} cityName City name
+     */
+    setAddressCityField(cityName) {
+        this.addressCityField.waitForDisplayed();
+        this.addressCityField.setValue(cityName);
+    }
+
+    /**
+     * Verify that correct data is entered
+     * @returns {String} text entered in the city field
+     */
+    checkAddressCityFieldText() {
+        this.addressCityField.waitForDisplayed();
+        return this.addressCityField.getValue();
+    }
+
+    selectAddressStateFromDropdown(state) {
+        this.addressStateDropdownMenu.waitForDisplayed();
+        this.addressStateDropdownMenu.click();
+        this.addressStateDropdownMenu.selectByIndex(state);
+    }
+
+    /**
+     * Verify that correct state is selected
+     * @returns {String} selected state
+     */
+    checkAddressStateSelectedValue() {
+        this.selectedStateText.waitForDisplayed();
+        return this.selectedStateText.getText();
+    }
+
+    setPostCodeField(postCode) {
+        this.addressPostCodeField.waitForDisplayed();
+        this.addressPostCodeField.setValue(postCode);
+    }
+
+    /**
+     * Verify that core data is send
+     * @returns {String} text entered into the post code field
+     */
+    checkPostCodeFieldText() {
+        this.addressPostCodeField.waitForDisplayed();
+        return this.addressPostCodeField.getValue();
+    }
+
+    setHomePhoneField(homePhone) {
+        this.homePhoneField.waitForDisplayed();
+        this.homePhoneField.setValue(homePhone);
+    }
+
+    /**
+     * Verify that correct data is entered into the field
+     * @returns {String} home phone field text
+     */
+    checkHomePhoneFieldText() {
+        this.homePhoneField.waitForDisplayed();
+        return this.homePhoneField.getValue();
+    }
+
+    setPhoneNumberField(phoneNumber) {
+        this.addressPhoneNumberField.waitForDisplayed();
+        this.addressPhoneNumberField.setValue(phoneNumber);
+    }
+
+    /**
+     * Verify correct data is entered into the phone field
+     * @returns {String} Phone number entered from user
+     */
+    checkPhoneNumberFieldText() {
+        this.addressPhoneNumberField.waitForDisplayed();
+        return this.addressPhoneNumberField.getValue();
+    }
+
+    /**
+     * Verify register button text
+     * @returns {String} Register button text
+     */
+    checkRegisterButtonText() {
+        this.registerButton.waitForDisplayed();
+        return this.registerButton.getText();
+    }
+
+    clickRegisterButton() {
+        this.registerButton.waitForDisplayed();
+        this.registerButton.click();
     }
 
 }
